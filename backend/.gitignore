@@ -1,0 +1,15 @@
+node_modules/
+*.log
+logs/
+.DS_Store
+*.db
+.env
+dist/
+coverage/
+.nyc_output/
+
+# Environment
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local

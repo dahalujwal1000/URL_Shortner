@@ -1,0 +1,182 @@
+/* ========================================
+   Global Styles - URL Shortener Frontend
+   Design system: "Ink & Teal"
+   Display: Space Grotesk · Body: Inter
+======================================== */
+
+/* Custom Fonts - must be before @tailwind */
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+
+@import "tailwindcss";
+
+/* ========================================
+   Tailwind v4 theme tokens ("Ink & Teal")
+   Replaces the legacy tailwind.config.js
+   ======================================== */
+@theme {
+  --color-ink: #16181d;
+  --color-ink-soft: #3f4450;
+  --color-ink-faint: #6b7280;
+  --color-paper: #fafaf8;
+  --color-line: #e7e5e0;
+
+  /* Teal accent scale */
+  --color-accent-50: #f0fdfa;
+  --color-accent-100: #ccfbf1;
+  --color-accent-200: #99f6e4;
+  --color-accent-300: #5eead4;
+  --color-accent-400: #2dd4bf;
+  --color-accent-500: #14b8a6;
+  --color-accent-600: #0d9488;
+  --color-accent-700: #0f766e;
+  --color-accent-800: #115e59;
+  --color-accent-900: #134e4a;
+
+  /* Legacy aliases — keep existing class names working with the new brand */
+  --color-purple-50: #f0fdfa;
+  --color-purple-100: #ccfbf1;
+  --color-purple-200: #99f6e4;
+  --color-purple-300: #5eead4;
+  --color-purple-400: #2dd4bf;
+  --color-purple-500: #14b8a6;
+  --color-purple-600: #0d9488;
+  --color-purple-700: #0f766e;
+  --color-purple-800: #115e59;
+  --color-purple-900: #134e4a;
+  --color-blue-50: #f0fdfa;
+  --color-blue-100: #ccfbf1;
+  --color-blue-200: #99f6e4;
+  --color-blue-300: #5eead4;
+  --color-blue-400: #22d3ee;
+  --color-blue-500: #06b6d4;
+  --color-blue-600: #0891b2;
+  --color-blue-700: #0e7490;
+
+  --font-sans: 'Inter', system-ui, sans-serif;
+  --font-display: 'Space Grotesk', 'Inter', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+
+  --shadow-card: 0 1px 2px rgba(22, 24, 29, 0.04), 0 8px 24px rgba(22, 24, 29, 0.06);
+  --shadow-lift: 0 2px 4px rgba(22, 24, 29, 0.05), 0 16px 40px rgba(22, 24, 29, 0.10);
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background: #FAFAF8;
+  color: #16181D;
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+/* Subtle grain-free paper texture via soft radial wash */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background:
+    radial-gradient(60rem 30rem at 85% -10%, rgba(13, 148, 136, 0.07), transparent 60%),
+    radial-gradient(50rem 28rem at 0% 110%, rgba(8, 145, 178, 0.05), transparent 60%);
+  pointer-events: none;
+}
+
+::selection {
+  background: rgba(13, 148, 136, 0.18);
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.fade-in {
+  animation: fadeIn 0.35s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.pulse-slow {
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fade-in, .pulse-slow {
+    animation: none;
+  }
+}
+
+/* Display type */
+.font-display {
+  font-family: 'Space Grotesk', 'Inter', system-ui, sans-serif;
+  letter-spacing: -0.02em;
+}
+
+/* Accent underline for the headline — restrained, no gradient fill */
+.accent-underline {
+  position: relative;
+  white-space: nowrap;
+}
+
+.accent-underline::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0.06em;
+  height: 0.14em;
+  background: rgba(13, 148, 136, 0.22);
+  border-radius: 999px;
+  z-index: -1;
+}
+
+/* Links */
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* Input Focus */
+input:focus, textarea:focus {
+  outline: none;
+  border-color: #0d9488;
+  box-shadow: 0 0 0 3px rgba(13, 148, 136, 0.15);
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #d6d3cd;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #a8a29e;
+}
+
+
+

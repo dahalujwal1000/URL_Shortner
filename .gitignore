@@ -1,0 +1,15 @@
+# URL Shortener Root
+node_modules/
+.DS_Store
+*.log
+logs/
+dist/
+coverage/
+*.db
+*.sqlite
+
+# Environment / secrets
+.env
+.env.local
+.env.*.local
+
