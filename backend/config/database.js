@@ -4,8 +4,11 @@ const dotenv = require('dotenv');
 
 dotenv.config();
 
-// Resolve database path - from backend/config/, go up to root then into database/
-const dbPath = path.resolve(__dirname, '../../database/urls.db');
+// Resolve database path - use DB_PATH env var if set (e.g. Render persistent disk),
+// otherwise default to <repo root>/database/urls.db (local development)
+const dbPath = process.env.DB_PATH
+  ? path.resolve(process.env.DB_PATH)
+  : path.resolve(__dirname, '../../database/urls.db');
 const db = new sqlite3.Database(dbPath, (err) => {
   if (err) {
     console.error('Database connection error:', err.message);

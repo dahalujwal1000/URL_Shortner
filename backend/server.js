@@ -11,6 +11,11 @@ const redirectRoutes = require('./routes/redirectRoutes');
 dotenv.config();
 
 const app = express();
+
+// Render runs the app behind a reverse proxy - trust it so rate limiting
+// and logging see the real client IP instead of the proxy's IP
+app.set('trust proxy', 1);
+
 const PORT = process.env.PORT || 5000;
 
 // Middleware
